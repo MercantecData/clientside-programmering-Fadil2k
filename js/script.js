@@ -9,18 +9,28 @@ function fetchWeather( d ) {
     });
   }
 
+  function getBG( d ) {
+    fetch('https://api.unsplash.com/photos/random?query=' + d+ '&client_id=RfB-3dfwTLcADB3VF80M-zkvBgF4ghiPAc2WyKN7V5M')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.urls.full);
+        return data.urls.full;
+    })
+    .catch(() => {
+//
+  });
+}
 
   function changeWeather( d ) {
     var weather = `<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${d.weather[0]["icon"]}.svg">`;
     var flag =  `<img src="https://www.countryflags.io/${d.sys.country}/shiny/64.png">`;
-    var bg = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=YOUR_API_KEY    '
     var degrees = d.main.temp;
     var description = d.weather[0].description;
     var location = d.name;
+    var bg = getBG(d.name);
 
-
-
-      document.getElementById('flag').innerHTML = flag;
+    document.getElementById('hero').style.backgroundImage = (`url('${bg}')`);
+    document.getElementById('flag').innerHTML = flag;
       document.getElementById('location').innerHTML = location;
       document.getElementById('temp').innerHTML = degrees + '&deg;';
       document.getElementById('icon').innerHTML = weather;

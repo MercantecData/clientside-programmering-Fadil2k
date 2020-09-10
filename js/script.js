@@ -54,7 +54,7 @@ var clones = 0;
       document.getElementById('icon').innerHTML = weather;
       document.getElementById('description').innerHTML = description;
       clones++;
-      $.CloneBox();
+      CloneBox();
 
     });
   }
@@ -65,7 +65,7 @@ var clones = 0;
   });
 
 
-  $.CloneBox = function(){
+  function CloneBox(){
     if( clones > 1  ) {
     $('#template')
          .clone()
@@ -93,7 +93,6 @@ google.maps.event.addListener(marker, 'dragend', function(evt){
 var lat = evt.latLng.lat().toFixed(3);
 var lon = evt.latLng.lng().toFixed(3);
 fetchWeather  (lat, lon);
-
 
 });
 

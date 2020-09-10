@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title></title>
-  <link rel="stylesheet" href="css/bulma.css"></style>
+  <link rel="stylesheet" href="css/bulma.min.css"></style>
   <link rel="stylesheet" href="css/custom.css"></style>
 </head>
 <body>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
 
            <div class="box" id="template">
                 <article class="media">
@@ -46,31 +46,6 @@
 
 </section>
 <div class="footer" id="map"></div>
-<script>
-  var myLatLng = {lat: 55.9396761, lng: 9.5155848};
-  var marker;
-function initMap() {
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: myLatLng
-  });
-
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    draggable:true,
-    title: 'Marked location'
-  });
-
-google.maps.event.addListener(marker, 'dragend', function(evt){
-    document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
-});
-
-  }
-
-
-  </script>
 <script src="js/jquery.js"></script>
 <script src="js/script.js"></script>
 <script defer

@@ -43,18 +43,15 @@ var clones = 0;
       var description = d.weather[0].description;
       var location = d.name;
 
-
-
-
-
-
-      document.getElementById('flag').innerHTML = flag;
-      document.getElementById('location').innerHTML = location;
-      document.getElementById('temp').innerHTML = degrees + '&deg;';
-      document.getElementById('icon').innerHTML = weather;
-      document.getElementById('description').innerHTML = description;
       clones++;
       CloneBox();
+      $('#template #flag').html(flag);
+      $('#template #location').html(location);
+      $('#template #temp').html(degrees + '&deg;');
+      $('#template #icon').html(weather);
+      $('#template #description').html(description);
+
+
 
     });
   }
@@ -69,7 +66,7 @@ var clones = 0;
     if( clones > 1  ) {
     $('#template')
          .clone()
-         .attr('id', 'template' + clones++)
+         .attr('id', 'template' + clones)
          .insertAfter($('[id^=template]:last').after('<br>'));
 }
 }

@@ -5,3 +5,10 @@
     -o-background-size: cover;
     background-size: cover;
   }
+.template {
+    display: none;
+}
+
+#map {
+    height: 500px;
+  }

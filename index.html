@@ -29,7 +29,7 @@
                 </div>
             </div> 
 
-            <div class="box">
+           <div class="box" id="template">
                 <article class="media">
                   <div class="media-content">
                     <div class="content">
@@ -45,8 +45,36 @@
         </div>
 
 </section>
+<div class="footer" id="map"></div>
+<script>
+  var myLatLng = {lat: 55.9396761, lng: 9.5155848};
+  var marker;
+function initMap() {
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    draggable:true,
+    title: 'Marked location'
+  });
+
+google.maps.event.addListener(marker, 'dragend', function(evt){
+    document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
+});
+
+  }
 
 
+  </script>
+<script src="js/jquery.js"></script>
 <script src="js/script.js"></script>
+<script defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYSCJ79O-2clEnHUbiM6Tf2TyUXeHy5u0&callback=initMap">
+</script>
 </body>
 </html>
